@@ -3,33 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Back Tracker</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <section class="container">
       <h1>Back Tracker</h1>
+      <p>Place blockers</p>
       <div class="grid">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell">X</div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell">X</div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell">X</div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+        <!-- Generate cells dynamically -->
+        <script>
+          for (let i = 0; i < 36; i++) {
+            document.write('<div class="cell"></div>');
+          }
+        </script>
       </div>
+      <button id="start">Start</button>
     </section>
-
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

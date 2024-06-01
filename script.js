@@ -1,18 +1,23 @@
+import { runDK } from "./snake.js";
+
 const cells = document.querySelectorAll(".cell");
+const startButton = document.getElementById("start");
+const instruction = document.querySelector("p");
 
-let grid = [
-    [1, 1, 1, 1],
-    [1, 1, 1, 1],
-    [1, 1, 1, 1],
-    [1, 1, 1, 1]
-];
+const handleClick = (event) => event.target.classList.toggle("yamete");
 
-cells.forEach((cell, index) => {
-    if (cell.innerHTML == "X")
-        grid[Math.floor(index / 4)][index % 4] = 0
-})
+cells.forEach((cell) => {
+    cell.addEventListener("click", handleClick);
+});
 
-console.log(grid);
+startButton.addEventListener("click", async () => {
+    startButton.classList.add("hide");
+    instruction.classList.add("hide");
+    cells.forEach((cell) => cell.removeEventListener("click", handleClick));
 
-// backtracking algorithm to find path from {0,0} to {3,3} and active it
+    const success = await runDK();
 
+    if (!success) {
+        cells.forEach((cell) => cell.classList.add("blinking"));
+    }
+});
